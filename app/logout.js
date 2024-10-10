@@ -1,21 +1,22 @@
-// app/logout.js
+// app/logout/page.js
 import { useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { useRouter } from 'next/router';
+
+const deleteCookie = (name) => {
+  document.cookie = `${name}=; Max-Age=0; path=/;`;
+};
 
 export default function Logout() {
   const { user } = useUser();
-  const router = useRouter();
 
   useEffect(() => {
     if (user) {
+      // Delete any additional cookies you want to remove
+      deleteCookie('appSession'); // Replace with the actual cookie name
       // Redirect to the logout API
-      window.location.href = '/api/auth/logout'; // Change this to the correct API path
-    } else {
-      // If not logged in, redirect to home or login page
-      router.push('/');
+      window.location.href = '/api/auth/logout';
     }
-  }, [user, router]);
+  }, [user]);
 
-  return <div>Logging out...</div>; // Show a message while logging out
+  return <div>Logging out...</div>;
 }
