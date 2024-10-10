@@ -6,7 +6,7 @@ export default handleAuth({
     res.setHeader('Set-Cookie', 'appSession=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure');
     
     await handleLogout(req, res, {
-      returnTo: process.env.NEXT_PUBLIC_BASE_URL
+      returnTo: process.env.AUTH0_BASE_URL
     });
   }
 });
