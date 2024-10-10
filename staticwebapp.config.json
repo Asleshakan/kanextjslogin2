@@ -3,8 +3,7 @@
     {
       "route": "/api/auth/*",
       "headers": {
-        "cache-control": "no-store, must-revalidate",
-        "set-cookie": "SameSite=None; Secure"
+        "set-cookie": "appSession=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure"
       }
     }
   ]
