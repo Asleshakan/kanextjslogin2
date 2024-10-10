@@ -1,12 +1,7 @@
 
-import { handleAuth, handleLogin, handleLogout } from '@auth0/nextjs-auth0';
 
-const logoutUrl = [
-  `${process.env.AUTH0_ISSUER_BASE_URL}/v2/logout?`,
-  `client_id=${process.env.AUTH0_CLIENT_ID}`,
-  `&returnTo=${process.env.AUTH0_BASE_URL}`,
-];
+import { handleAuth, handleLogout } from '@auth0/nextjs-auth0'
 
 export const GET = handleAuth({
-  logout: handleLogout({ returnTo: logoutUrl.join('') }),
-});
+  logout: handleLogout({ returnTo: 'https://calm-stone-0060af810.5.azurestaticapps.net/api/auth/login' }),
+})
