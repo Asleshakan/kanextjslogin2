@@ -1,3 +1,12 @@
-import { handleAuth } from '@auth0/nextjs-auth0';
+import { handleAuth, handleLogout } from '@auth0/nextjs-auth0';
 
-export const GET = handleAuth();
+export default handleAuth({
+  async logout(req, res) {
+    // Clear appSession cookie
+    res.setHeader('Set-Cookie', 'appSession=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure');
+    
+    await handleLogout(req, res, {
+      returnTo: process.env.NEXT_PUBLIC_BASE_URL
+    });
+  }
+});
