@@ -12,7 +12,7 @@
         "cache-control": "no-store, must-revalidate"
       }
     }
-  ]
+  ],
   "globalHeaders": {
     "Cache-Control": "no-cache, no-store, must-revalidate"
   }
