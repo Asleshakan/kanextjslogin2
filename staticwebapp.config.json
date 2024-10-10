@@ -8,7 +8,6 @@
       "rewrite": "/404.html",
       "statusCode": 404
     }
-    // Remove the 500 status code
   },
   "globalHeaders": {
     "Cache-Control": "no-cache, no-store, must-revalidate"
