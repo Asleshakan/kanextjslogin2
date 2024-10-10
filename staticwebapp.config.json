@@ -1,6 +1,11 @@
 {
   "routes": [
     {
+      "route": "/api/auth/logout",
+      "redirect": "/",
+      "statusCode": 302
+    },
+    {
       "route": "/api/auth/*",
       "headers": {
         "cache-control": "no-store, must-revalidate"
@@ -11,11 +16,6 @@
       "headers": {
         "cache-control": "no-store, must-revalidate"
       }
-    },
-      {
-      "route": "/api/auth/logout",
-      "redirect": "/",
-      "statusCode": 302
     }
   ],
   "globalHeaders": {
