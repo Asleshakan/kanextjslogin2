@@ -1,22 +1,21 @@
-// app/logout/page.js
-import { useEffect } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+//pages/api/logout-oidc.ts
 
-const deleteCookie = (name) => {
-  document.cookie = `${name}=; Max-Age=0; path=/;`;
-};
+import { getSession, handleLogout } from '@auth0/nextjs-auth0'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export default function Logout() {
-  const { user } = useUser();
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'GET') {
+    const session = await getSession(req, res)
+    console.log({ session })
 
-  useEffect(() => {
-    if (user) {
-      // Delete any additional cookies you want to remove
-      deleteCookie('appSession'); // Replace with the actual cookie name
-      // Redirect to the logout API
-      window.location.href = '/api/auth/logout';
-    }
-  }, [user]);
+    const logoutUrl = `${process.env.AUTH0_ISSUER_BASE_URL}/oidc/logout?clientId=${process.env.AUTH0_CLIENT_ID}&logout_hint=${session?.user.sid}`
 
-  return <div>Logging out...</div>;
+    await fetch(logoutUrl, {
+      method: 'GET'
+    })
+
+    return res.status(200).json({ message: 'Logged out successfully' })
+  }
 }
+
+export default handler
