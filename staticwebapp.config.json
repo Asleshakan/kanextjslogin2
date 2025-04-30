@@ -1,6 +1,6 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html",
+    "rewrite": "/",
     "exclude": ["/api/*", "/_next/*", "/static/*", "/favicon.ico", "/manifest.json"]
   },
   "routes": [
