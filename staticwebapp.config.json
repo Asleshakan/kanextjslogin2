@@ -1,10 +1,43 @@
 {
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*", "/_next/*", "/static/*", "/favicon.ico", "/manifest.json"]
+  },
   "routes": [
     {
-      "route": "/api/auth/*",
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/logout",
       "headers": {
-        "set-cookie": "appSession=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure"
+        "Cache-Control": "no-store, must-revalidate"
+      }
+    },
+    {
+      "route": "/*",
+      "headers": {
+        "Cache-Control": "no-store, must-revalidate"
       }
     }
-  ]
+  ],
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "enabled": false
+      },
+      "github": {
+        "enabled": false
+      },
+      "google": {
+        "enabled": false
+      },
+      "twitter": {
+        "enabled": false
+      }
+    }
+  },
+  "mimeTypes": {
+    ".json": "application/json"
+  }
 }
