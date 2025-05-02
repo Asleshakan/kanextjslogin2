@@ -5,6 +5,11 @@
   },
   "routes": [
     {
+      "route": "/api/auth/*",
+      "rewrite": "/api/auth",
+      "allowedRoles": ["anonymous"]
+    },
+    {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
     },
