@@ -31,9 +31,10 @@ export default function Home() {
             <h2>Welcome, {user.name}!</h2>
             <img src={user.picture} alt={user.name} width={50} height={50} />
             <p>Email: {user.email}</p>
-            <a href="/api/auth/logout?returnTo=/" className={styles.primary}>
-              Logout
-            </a>
+          <a href={`https://white-bush-0d4ba781e.6.azurestaticapps.net/api/auth/logout?returnTo=https://white-bush-0d4ba781e.6.azurestaticapps.net/`}>
+             Logout
+          </a>
+
           </div>
         ) : (
           <div>
