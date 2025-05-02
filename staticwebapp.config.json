@@ -3,6 +3,7 @@
     "rewrite": "/",
     "exclude": ["/api/*", "/_next/*", "/static/*", "/favicon.ico", "/manifest.json"]
   },
+  "routes": [
     {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
